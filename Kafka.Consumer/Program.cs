@@ -3,7 +3,7 @@ using Kafka.Consumer;
 
 Console.WriteLine("Kafka Consumer\n");
 
-string topicName = "topic-use-case-5";
+string topicName = "myTopic";
 
 var kafkaService = new KafkaService();
 

@@ -1,51 +1,18 @@
 ﻿using Confluent.Kafka;
 using Kafka.Consumer.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Kafka.Consumer;
 
 internal class KafkaService
 {
-    internal async Task ConsumeSimpleMessageWithNullKeyAsync(string topicName)
-    {
-        try
-        {
-            var config = new ConsumerConfig()
-            {
-                BootstrapServers = "localhost:9094",
-                GroupId = "use-case-1-group-1",
-                AutoOffsetReset = AutoOffsetReset.Latest
-            };
-
-            var consumer = new ConsumerBuilder<Null, string>(config).Build();
-            consumer.Subscribe(topicName);
-
-            while (true)
-            {
-                var consumeResult = consumer.Consume(5000);
-                if (consumeResult != null)
-                {
-                    await Console.Out.WriteLineAsync($"Received message = {consumeResult.Message.Value}");
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            await Console.Out.WriteLineAsync(ex.Message);
-        }
-    }
-
     internal async Task ConsumeComplexMessageAsync(string topicName)
     {
         try
         {
             var config = new ConsumerConfig()
             {
-                BootstrapServers = "localhost:9094",
+                BootstrapServers = "localhost:7000,localhost:7001,localhost:7002",
                 GroupId = "group-1",
                 AutoOffsetReset = AutoOffsetReset.Earliest,
                 EnableAutoCommit = false // Arka planda otomatik olarak gerçekleşen commit işlemini iptal eder.
@@ -93,7 +60,6 @@ internal class KafkaService
                     catch (Exception ex)
                     {
                         await Console.Out.WriteLineAsync(ex.Message);
-                        throw;
                     }
 
                 }

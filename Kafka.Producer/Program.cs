@@ -4,7 +4,7 @@ using Kafka.Producer;
 
 Console.WriteLine("Kafka Producer\n");
 
-string topicName = "topic-use-case-5";
+string topicName = "myTopic";
 
 var kafkaService = new KafkaService();
 
