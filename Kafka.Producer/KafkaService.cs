@@ -85,8 +85,8 @@ internal class KafkaService
                                         // 2. denemede  => 200
                                         // 3. denemede  => 400
                                         // 4. denemede  => 800
-                                        // .                .
-
+                                        // 5. denemede  => 1600
+                                        // 6. denemede  => 1600 // 2000'i geçemeyeceği için "MessageSendMaxRetries" değerine ulaşana kadar 1600 ms de sabit kalır.
 
             MessageSendMaxRetries = 10  // ve max. 10 kez dene. Yani 18. saniyede "min.insync.replicas" değeri karşılanamazsa hata fırlatacaktır.
         };
