@@ -61,7 +61,6 @@ internal class KafkaService
                     {
                         await Console.Out.WriteLineAsync(ex.Message);
                     }
-
                 }
             }
         }
